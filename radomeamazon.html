@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Amazon Product</title>
+    <link rel="icon" type="image/x-icon" href="amazone.png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff9900;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc7a00;
+        }
+    </style>
+</head>
+<body>
+    <button id="randomProductButton">Take Me to a Random Amazon Product</button>
+
+    <script>
+        const randomProductButton = document.getElementById('randomProductButton');
+
+        const productLinks = [
+            "https://amzn.to/40MSNZY", 
+            "https://amzn.to/42tVWiq", 
+            "https://amzn.to/3E2GEH9", 
+            "https://amzn.to/40vOlNH",
+            "https://amzn.to/4h6FZmV",
+            "https://amzn.to/4aAkicu",
+            "https://amzn.to/4gbGY3K", 
+            "https://amzn.to/3EcrC1J", 
+            "https://amzn.to/4hpVaXZ",
+            "https://amzn.to/4gZu761", 
+            "https://amzn.to/3E6C8rf", 
+            "https://amzn.to/40PKInm", 
+            "https://amzn.to/4gbQ5Bt",  
+            "https://amzn.to/3Wtf6RS",
+            "https://amzn.to/4axZZMP", 
+            "https://amzn.to/3E6Kijf", 
+            "https://amzn.to/4hpbB6O", 
+            "https://amzn.to/3E9xjNW", 
+            "https://amzn.to/40WPsYp",
+            "https://amzn.to/4ayFDTj",
+            "https://amzn.to/40neqys",
+            "https://amzn.to/4hpWv0X", 
+            "https://amzn.to/3PPJuSE", 
+            "https://amzn.to/3Cj6oyH",
+            "https://amzn.to/3Wyeuu7", 
+            "https://amzn.to/40MlMNu", 
+            "https://amzn.to/40tTHcj", 
+            
+        ];
+
+        const recentLinks = []; 
+        randomProductButton.addEventListener('click', () => {
+            let randomIndex;
+
+            
+            do {
+                randomIndex = Math.floor(Math.random() * productLinks.length);
+            } while (recentLinks.includes(randomIndex));
+
+            recentLinks.push(randomIndex);
+
+           
+            if (recentLinks.length > 10) {
+                recentLinks.shift();
+            }
+
+           
+            window.open(productLinks[randomIndex], '_blank');
+        });
+
+    </script>
+</body>
+</html>
